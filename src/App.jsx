@@ -1,14 +1,16 @@
-import { useState } from 'react'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
 
 export default function App() {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('T8ninho');
   const [repositorio, setRepositorio] = useState([]);
   const [userData, setUserData] = useState(null);
   const [carregando, setCarregando] = useState(false);
+  const [error, setError] = useState('');
 
   const Pesquisar = async () => {
     setCarregando(true);
+    setError('');
     try {
       const userResponse = await fetch(`https://api.github.com/users/${username}`);
       if (!userResponse.ok) {
@@ -22,44 +24,63 @@ export default function App() {
       setRepositorio(reposData);
     } catch (error) {
       console.error(error);
+      setError('Usuário não encontrado');
       setUserData(null);
       setRepositorio([]);
     }
     setCarregando(false);
   };
 
-  return(
-    <div>
-      <h1>Busca de Repositórios no github</h1>
+  useEffect(() => {
+    Pesquisar();
+  }, []);
+
+  const EnterPress = (event) => {
+    if (event.key === 'Enter') {
+      Pesquisar();
+    }
+  };
+
+  return (
+    <div className='App'>
+      <h1>Busca de Repositórios no GitHub</h1>
       <input 
-        type='text'
+        type="text"
         value={username}
+        onKeyDown={EnterPress}
         onChange={(e) => setUsername(e.target.value)}
-        placeholder='Digite o nome de usuário'
+        placeholder="Digite o nome de usuário"
       />
       <button onClick={Pesquisar}>Pesquisar</button>
       {carregando && <p>Carregando...</p>}
-      <div className='container'>
-        
-        {userData && (
+      {error && <p>{error}</p>}
+      <div className="container">
+        {userData && !error && (
           <div>
-            <img src={userData.avatar_url} alt='Avatar' width='300' height='300'/>
+            <div className="userImage">
+              <img src={userData.avatar_url} alt="Avatar"/>
+            </div>
             <h2>{userData.name || userData.login}</h2>
-            <a href={userData.html_url} target='_blank' rel='noopener noreferrer'>@{userData.login}</a>
+            <a href={userData.html_url} target="_blank" rel="noopener noreferrer">@{userData.login}</a>
             <p>{userData.bio}</p>
           </div>
         )}
-        {repositorio.map((item) => (
-          <div className='repositorio' key={item.id}>
-            <div className='repositorioHeader'>
+        {repositorio.length > 0 && !error && repositorio.map((item) => (
+          <div className="repositorio" key={item.id}>
+            <div className="repositorioHeader">
               <h2>{item.name}</h2>
-              <a href={item.html_url} target='_blank' rel='noopener noreferrer'>Ver Repósitório</a>
+              <a href={item.html_url} target="_blank" rel="noopener noreferrer">Ver Repositório</a>
             </div>
             {item.description ? (<><hr /> <p>{item.description}</p></>) : ''}
           </div>
         ))}
-
       </div>
+      <div className='Footer'>
+            <div>
+             <p>© 2024 | Feito com <d>❤</d> por </p>
+             <a href='http://t8ninho.com/'>T8ninho</a>
+            </div>
+        </div>
     </div>
   );
 }

@@ -1,14 +1,25 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100vw;
   text-align: center;
   cursor: default;
+  color: #fff;
 }
 
 .userInfo {
   height: 500px;
+}
 
+.userImage {
+  margin: 0 auto;
+  padding-top: 2rem;
+  width: 250px;
+  height: 250px;
+  border-radius: 8px;
+
+  img {
+    border-radius: 16px;
+    width: 100%;
+  }
 }
 
 .container {
@@ -24,13 +35,26 @@
   width: 100%;
   background-color: #3a3a3a;
   padding: 1rem;
-
-  hr {
-    border: none;
-    height: 1px;
-    background-color: #ffffff65;
-  }
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 6px -1px, 
+              rgba(0, 0, 0, 0.3) 0px 7px 13px -3px;
+  transition: box-shadow .5s ease;
 }
+
+.repositorio:hover {
+  box-shadow: 
+  rgb(85, 91, 255) 0px 0px 0px 2px, 
+  rgb(31, 193, 27) 0px 0px 0px 4px, 
+  rgb(255, 217, 19) 0px 0px 0px 6px, 
+  rgb(255, 156, 85) 0px 0px 0px 8px, 
+  rgb(255, 85, 85) 0px 0px 0px 10px;
+}
+
+.repositorio hr {
+  border: none;
+  height: 1px;
+  background-color: #ffffff65;
+}
+
 
 .repositorioHeader {
   display: flex;
@@ -46,4 +70,47 @@
     padding: .5rem;
     border-radius: 8px;
   }
+}
+
+.Footer {
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: linear-gradient(to right, #ff0000, #0000ff, #00ff00, #ff0000, #00ff00);
+  position: static;
+  bottom: 0;
+  width: 100%;
+
+  div {
+    color: #000;
+    margin: auto;
+    background: #ffffff4c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+  };
+
+  d {
+    color: #ff0000;
+  }
+  p {
+      padding-right: 5px;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+    border-bottom: 2px dotted #000;
+    cursor: pointer;
+    transition: letter-spacing .5s;
+    
+    &:hover {
+        letter-spacing: .2rem;
+        color: #000;
+        border-bottom: 2px dotted #3c80ff;
+    }
+}
 }
