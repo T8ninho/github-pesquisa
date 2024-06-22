@@ -1,0 +1,25 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.repositorio {
+  max-width: 600px;
+  width: 100%;
+  background-color: #3a3a3a;
+  padding: 1rem;
+}
+
+.repositorioHeader {
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    background-color: #1a1a1a;
+    height: 100%;
+    padding: .5rem;
+    border-radius: 8px;
+  }
+}
