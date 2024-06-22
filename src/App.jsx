@@ -14,7 +14,7 @@ export default function App() {
         placeholder='Digite o nome de usuário'
       />
       <button onClick={Pesquisar}>Pesquisar</button>
-      <div>
+      <div className='container'>
 
         <div className='repositorio'>
           <div className='repositorioHeader'>
