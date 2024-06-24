@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 export default function App() {
-  const [username, setUsername] = useState('T8ninho');
+  const [username, setUsername] = useState('t8ninho');
   const [repositorio, setRepositorio] = useState([]);
   const [userData, setUserData] = useState(null);
   const [carregando, setCarregando] = useState(false);
@@ -43,6 +43,7 @@ export default function App() {
 
   return (
     <div className='App'>
+      <div>
       <h1>Busca de Repositórios no GitHub</h1>
       <input 
         type="text"
@@ -74,6 +75,7 @@ export default function App() {
             {item.description ? (<><hr /> <p>{item.description}</p></>) : ''}
           </div>
         ))}
+      </div>
       </div>
       <div className='Footer'>
             <div>

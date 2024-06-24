@@ -5,6 +5,24 @@
   color: #fff;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+
+  input {
+    max-width: 300px;
+    width: 100%;
+  }
+
+  button {
+    background-color: #3a3a3a;
+    border: 1px solid #fff;
+  }
+}
+
 .userInfo {
   height: 500px;
 }
@@ -30,7 +48,7 @@
 }
 
 .repositorio {
-  max-width: 600px;
+  max-width: 80vw;
   border-radius: 8px;
   width: 100%;
   background-color: #3a3a3a;
